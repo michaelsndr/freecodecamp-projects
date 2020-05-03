@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link href="main.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=PT+Mono|PT+Sans:400,400i,700,700i&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar" id="navbar">
+    <header class="navbar__header">
+      <a href="#"><img src="sass-logo.svg" class="navbar__header_logo" alt="Sass Logo"></a>
+      <p>Before you can use Sass, you need to set it up on your project. If you want to just browse here, go
+        ahead, but we recommend you go install Sass first. <a href="https://sass-lang.com/install" target="_blank">Go
+          here</a> if you want to learn how to get everything
+        setup.</p>
+    </header>
+    <div class="navbar__links">
+      <span><a class="nav-link" href="#Preprocessing">Preprocessing</a></span>
+      <span><a class="nav-link" href="#Variables">Variables</a></span>
+      <span><a class="nav-link" href="#Nesting">Nesting</a></span>
+      <span><a class="nav-link" href="#Partials">Partials</a></span>
+      <span><a class="nav-link" href="#Import">Import</a></span>
+      <span><a class="nav-link" href="#Mixins">Mixins</a></span>
+      <span><a class="nav-link" href="#Extend">Extend</a></span>
+      <span><a class="nav-link" href="#Operators">Operators</a></span>
+    </div>
+  </nav>
+  <a class="to-top-btn to-top-btn__hide" id="to-top-btn" href="#"><i class="material-icons">arrow_upward</i></a>
+
+  <main class="docs" id="main-doc">
+    <h1>Sass Basics</h1>
+    <section id="Preprocessing" class="main-section docs__section">
+      <header>
+        <h2>Preprocessing</h2>
+      </header>
+      <p>CSS on its own can be fun, but stylesheets are getting larger, more complex, and harder to maintain. This
+        is where a preprocessor can help. Sass lets you use features that don't exist in CSS yet like variables,
+        nesting, mixins, inheritance and other nifty goodies that make writing CSS fun again.</p>
+      <p>Once you start tinkering with Sass, it will take your preprocessed Sass file and save it as a normal CSS
+        file that you can use in your website.</p>
+      <p>The most direct way to make this happen is in your terminal. Once Sass is installed, you can compile your
+        Sass to CSS using the <code>sass</code> command. You'll need to tell Sass which file to build from, and
+        where to
+        output CSS to. For example, running <code>sass input.scss output.css</code> from your terminal would
+        take a single
+        Sass file, <code>input.scss</code>, and compile that file to <code>output.css</code>.</p>
+      <p>You can also watch individual files or directories with the <code>--watch</code> flag. The watch flag
+        tells Sass to
+        watch your source files for changes, and re-compile CSS each time you save your Sass. If you wanted to
+        watch (instead of manually build) your <code>input.scss</code> file, you'd just add the watch flag to
+        your command,
+        like so:</p>
+      <p><code>sass --watch input.scss output.css</code></p>
+      <p>You can watch and output to directories by using folder paths as your input and output, and separating
+        them with a colon. In this example:</p>
+      <p><code>sass --watch app/sass:public/stylesheets</code></p>
+      <p>Sass would watch all files in the <code>app/sass</code> folder for changes, and compile CSS to the
+        <code>public/stylesheets</code>
+        folder.</p>
+    </section>
+
+
+    <section id="Variables" class="main-section docs__section">
+      <header>
+        <h2>Variables</h2>
+      </header>
+      <p>Think of variables as a way to store information that you want to reuse throughout your stylesheet. You
+        can store things like colors, font stacks, or any CSS value you think you'll want to reuse. Sass uses
+        the $ symbol to make something a variable. Here's an example:</p>
+
+      <h6>SCSS</h6>
+      <pre class="code">
+<code><span class="code__var">$font-stack</span><span class="code__punct">:</span>    <span class="code__val">Helvetica</span><span class="code__punct">,</span> <span class="code__val">sans-serif</span><span class="code__punct">;</span>
+<span class="code__var">$primary-color</span><span class="code__punct">:</span> <span class="code__num">#333</span><span class="code__punct">;</span>
+<br>
+<span class="code__sel">body</span> <span class="code__punct">{</span>
+  <span class="code__prop">font</span><span class="code__punct">:</span> <span class="code__num">100%</span> <span class="code__var">$font-stack</span><span class="code__punct">;</span>
+  <span class="code__prop">color</span><span class="code__punct">:</span> <span class="code__var">$primary-color</span><span class="code__punct">;</code>
+<span class="code__punct">}</span></code></pre>
+
+      <h6>Sass</h6>
+      <pre class="code">
+<code><span class="code__var">$font-stack</span><span class="code__punct">:</span>    <span class="code__val">Helvetica</span><span class="code__punct">,</span> <span class="code__val">sans-serif</span><span class="code__punct">;</span>
+<span class="code__var">$primary-color</span><span class="code__punct">:</span> <span class="code__num">#333</span>
+
+<span class="code__sel">body</span>
+  <span class="code__prop">font</span><span class="code__punct">:</span> <span class="code__num">100%</span> <span class="code__var">$font-stack</span>
+  <span class="code__prop">color</span><span class="code__punct">:</span> <span class="code__var">$primary-color</span></code></pre>
+
+      <h6>CSS</h6>
+      <pre class="code">
+<code><span class="code__sel">body</span> <span class="code__punct">{</span>
+  <span class="code__prop">font</span><span class="code__punct">:</span> <span class="code__num">100%</span> <span class="code__val">Helvetica</span><span class="code__punct">,</span> <span class="code__val">sans-serif</span><span class="code__punct">;</span>
+  <span class="code__prop">color</span><span class="code__punct">:</span> <span class="code__num">#333</span><span class="code__punct">;</span>
+<span class="code__punct">}</span></code></pre>
+
+      <p>When the Sass is processed, it takes the variables we define for the <code>$font-stack</code> and
+        <code>$primary-color</code> and
+        outputs normal CSS with our variable values placed in the CSS. This can be extremely powerful when
+        working with brand colors and keeping them consistent throughout the site.</p>
+    </section>
+
+
+    <section id="Nesting" class="main-section docs__section">
+      <header>
+        <h2>Nesting</h2>
+      </header>
+      <p>When writing HTML you've probably noticed that it has a clear nested and visual hierarchy. CSS, on the
+        other hand, doesn't.</p>
+      <p>Sass will let you nest your CSS selectors in a way that follows the same visual hierarchy of your HTML.
+        Be aware that overly nested rules will result in over-qualified CSS that could prove hard to maintain
+        and is generally considered bad practice.</p>
+      <p>With that in mind, here's an example of some typical styles for a site's navigation:</p>
+
+      <h6>SCSS</h6>
+      <pre class="code">
+<code><span class="code__sel">nav</span> <span class="code__punct">{</span>
+  <span class="code__sel">ul</span> <span class="code__punct">{</span>
+    <span class="code__prop">margin</span><span class="code__punct">:</span> <span class="code__num">0</span><span class="code__punct">;</span>
+    <span class="code__prop">padding</span><span class="code__punct">:</span> <span class="code__num">0</span><span class="code__punct">;</span>
+    <span class="code__prop">list-style</span><span class="code__punct">:</span> <span class="code__val">none</span><span class="code__punct">;</span>
+  <span class="code__punct">}</span>
+  
+  <span class="code__sel">li</span> <span class="code__punct">{</span> <span class="code__prop">display</span><span class="code__punct">:</span> <span class="code__val">inline-block</span><span class="code__punct">;</span> <span class="code__punct">}</span>
+  
+  <span class="code__sel">a</span> <span class="code__punct">{</span>
+    <span class="code__prop">display</span><span class="code__punct">:</span> <span class="code__val">block</span><span class="code__punct">;</span>
+    <span class="code__prop">padding</span><span class="code__punct">:</span> <span class="code__num">6px 12px</span><span class="code__punct">;</span>
+    <span class="code__prop">text-decoration</span><span class="code__punct">:</span> <span class="code__val">none</span><span class="code__punct">;</span>
+  <span class="code__punct">}</span>
+<span class="code__punct">}</span></code></pre>
+
+      <h6>Sass</h6>
+      <pre class="code">
+<code><span class="code__sel">nav</span>
+  <span class="code__sel">ul</span>
+    <span class="code__prop">margin</span><span class="code__punct">:</span> <span class="code__num">0</span>
+    <span class="code__prop">padding</span><span class="code__punct">:</span> <span class="code__num">0</span>
+    <span class="code__prop">list-style</span><span class="code__punct">:</span> <span class="code__val">none</span>
+
+  <span class="code__sel">li</span>
+    <span class="code__prop">display</span><span class="code__punct">:</span> <span class="code__val">inline-block</span>
+
+  <span class="code__sel">a</span>
+    <span class="code__prop">display</span><span class="code__punct">:</span> <span class="code__val">block</span>
+    <span class="code__prop">padding</span><span class="code__punct">:</span> <span class="code__num">6px 12px</span>
+    <span class="code__prop">text-decoration</span><span class="code__punct">:</span> <span class="code__val">none</span></code></pre>
+
+      <h6>CSS</h6>
+      <pre class="code">
+<code><span class="code__sel">nav ul</span> <span class="code__punct">{</span>
+  <span class="code__prop">margin</span><span class="code__punct">:</span> <span class="code__num">0</span><span class="code__punct">;</span>
+  <span class="code__prop">padding</span><span class="code__punct">:</span> <span class="code__num">0</span><span class="code__punct">;</span>
+  <span class="code__prop">list-style</span><span class="code__punct">:</span> <span class="code__val">none</span><span class="code__punct">;</span>
+<span class="code__punct">}</span>
+<span class="code__sel">nav li</span> <span class="code__punct">{</span>
+  <span class="code__prop">display</span><span class="code__punct">:</span> <span class="code__val">inline-block</span><span class="code__punct">;</span>
+<span class="code__punct">}</span>
+<span class="code__sel">nav a</span> <span class="code__punct">{</span>
+  <span class="code__prop">display</span><span class="code__punct">:</span> <span class="code__val">block</span><span class="code__punct">;</span>
+  <span class="code__prop">padding</span><span class="code__punct">:</span> <span class="code__num">6px 12px</span><span class="code__punct">;</span>
+  <span class="code__prop">text-decoration</span><span class="code__punct">:</span> <span class="code__val">none</span><span class="code__punct">;</span>
+<span class="code__punct">}</span></code></pre>
+
+      <p>You'll notice that the <code>ul</code>, <code>li</code>, and <code>a</code> selectors are nested inside
+        the <code>nav</code> selector. This is a great way to
+        organize your CSS and make it more readable.</p>
+    </section>
+
+
+    <section id="Partials" class="main-section docs__section">
+      <header>
+        <h2>Partials</h2>
+      </header>
+      <p>You can create partial Sass files that contain little snippets of CSS that you can include in other Sass
+        files. This is a great way to modularize your CSS and help keep things easier to maintain. A partial is
+        simply a Sass file named with a leading underscore. You might name it something like
+        <code>_partial.scss</code>. The underscore lets Sass know that the file is only a partial file and that
+        it should not be generated into a CSS file. Sass partials are used with the <code>@import</code>
+        directive.</p>
+    </section>
+
+
+    <section id="Import" class="main-section docs__section">
+      <header>
+        <h2>Import</h2>
+      </header>
+      <p>CSS has an import option that lets you split your CSS into smaller, more maintainable portions. The only
+        drawback is that each time you use <code>@import</code> in CSS it creates another HTTP request. Sass
+        builds on top of the current CSS <code>@import</code> but instead of requiring an HTTP request, Sass
+        will take the file that you want to import and combine it with the file you're importing into so you can
+        serve a single CSS file to the
+        web browser.</p>
+      <p>Let's say you have a couple of Sass files, <code>_reset.scss</code> and <code>base.scss</code>. We want
+        to import <code>_reset.scss</code> into <code>base.scss</code>.</p>
+
+      <h6>SCSS</h6>
+      <pre class="code">
+<code><span class="code__comm">// _reset.scss</span>
+<span class="code__sel">html</span><span class="code__punct">,</span>
+<span class="code__sel">body</span><span class="code__punct">,</span>
+<span class="code__sel">ul</span><span class="code__punct">,</span>
+<span class="code__sel">ol</span> <span class="code__punct">{</span>
+  <span class="code__prop">margin</span><span class="code__punct">:</span>  <span class="code__num">0</span><span class="code__punct">;</span>
+  <span class="code__prop">padding</span><span class="code__punct">:</span> <span class="code__num">0</span><span class="code__punct">;</span>
+<span class="code__punct">}</span></code></pre>
+
+      <pre class="code">
+<code><span class="code__comm">// base.scss</span>
+<span class="code__rule">@import</span> <span class="code__str">'reset'</span><span class="code__punct">;</span>
+<span class="code__sel">body</span> <span class="code__punct">{</span>
+  <span class="code__prop">font</span><span class="code__punct">:</span> <span class="code__num">100%</span> <span class="code__val">Helvetica</span><span class="code__punct">,</span> <span class="code__val">sans-serif</span><span class="code__punct">;</span>
+  <span class="code__prop">background-color</span><span class="code__punct">:</span> <span class="code__num">#efefef</span><span class="code__punct">;</span>
+<span class="code__punct">}</span></code></pre>
+
+      <h6>Sass</h6>
+      <pre class="code">
+<code><span class="code__comm">// _reset.sass</span>
+<span class="code__sel">html</span><span class="code__punct">,</span>
+<span class="code__sel">body</span><span class="code__punct">,</span>
+<span class="code__sel">ul</span><span class="code__punct">,</span>
+<span class="code__sel">ol</span>
+  <span class="code__prop">margin</span><span class="code__punct">:</span>  <span class="code__num">0</span>
+  <span class="code__prop">padding</span><span class="code__punct">:</span> <span class="code__num">0</span></code></pre>
+
+      <pre class="code">
+<code><span class="code__comm">// base.sass</span>
+<span class="code__rule">@import</span> <span class="code__str">reset</span>
+<span class="code__sel">body</span>
+  <span class="code__prop">font</span><span class="code__punct">:</span> <span class="code__num">100%</span> <span class="code__val">Helvetica</span><span class="code__punct">,</span> <span class="code__val">sans-serif</span>
+  <span class="code__prop">background-color</span><span class="code__punct">:</span> <span class="code__num">#efefef</span></code></pre>
+
+      <h6>CSS</h6>
+      <pre class="code">
+<code><span class="code__sel">html</span><span class="code__punct">,</span>
+<span class="code__sel">body</span><span class="code__punct">,</span>
+<span class="code__sel">ul</span><span class="code__punct">,</span>
+<span class="code__sel">ol</span> <span class="code__punct">{</span>
+  <span class="code__prop">margin</span><span class="code__punct">:</span>  <span class="code__num">0</span><span class="code__punct">;</span>
+  <span class="code__prop">padding</span><span class="code__punct">:</span> <span class="code__num">0</span><span class="code__punct">;</span>
+<span class="code__punct">}</span>
+<span class="code__sel">body</span> <span class="code__punct">{</span>
+  <span class="code__prop">font</span><span class="code__punct">:</span> <span class="code__num">100%</span> <span class="code__val">Helvetica</span><span class="code__punct">,</span> <span class="code__val">sans-serif</span><span class="code__punct">;</span>
+  <span class="code__prop">background-color</span><span class="code__punct">:</span> <span class="code__num">#efefef</span><span class="code__punct">;</span>
+<span class="code__punct">}</span></code></pre>
+
+      <p>Notice we're using <code>@import 'reset';</code> in the <code>base.scss</code> file. When you import a
+        file you don't need to include the file extension <code>.scss</code>. Sass is smart and will figure it
+        out for you.</p>
+    </section>
+
+
+    <section id="Mixins" class="main-section docs__section">
+      <header>
+        <h2>Mixins</h2>
+      </header>
+      <p>Some things in CSS are a bit tedious to write, especially with CSS3 and the many vendor prefixes that
+        exist. A mixin lets you make groups of CSS declarations that you want to reuse throughout your site. You
+        can even pass in values to make your mixin more flexible. A good use of a mixin is for vendor prefixes.
+        Here's an example for <code>transform</code>.</p>
+
+      <h6>SCSS</h6>
+      <pre class="code">
+<code><span class="code__rule">@mixin</span> <span class="code__func">transform</span><span class="code__punct">(</span><span class="code__var">$property</span><span class="code__punct">)</span> <span class="code__punct">{</span>
+  <span class="code__prop">-webkit-transform</span><span class="code__punct">:</span> <span class="code__var">$property</span><span class="code__punct">;</span>
+  <span class="code__prop">-ms-transform</span><span class="code__punct">:</span> <span class="code__var">$property</span><span class="code__punct">;</span>
+  <span class="code__prop">transform</span><span class="code__punct">:</span> <span class="code__var">$property</span><span class="code__punct">;</span>
+<span class="code__punct">}</span>
+<span class="code__sel">.box</span> <span class="code__punct">{</span> <span class="code__rule">@include</span> <span class="code__func">transform</span><span class="code__punct">(</span><span class="code__func">rotate</span><span class="code__punct">(</span><span class="code__num">30deg</span><span class="code__punct">)</span><span class="code__punct">)</span><span class="code__punct">;</span> <span class="code__punct">}</span></code></pre>
+
+      <h6>Sass</h6>
+      <pre class="code">
+<code><span class="code__func">=transform</span><span class="code__punct">(</span><span class="code__var">$property</span><span class="code__punct">)</span>
+  <span class="code__prop">-webkit-transform</span><span class="code__punct">:</span> <span class="code__var">$property</span>
+  <span class="code__prop">-ms-transform</span><span class="code__punct">:</span> <span class="code__var">$property</span>
+  <span class="code__prop">transform</span><span class="code__punct">:</span> <span class="code__var">$property</span>
+<span class="code__sel">.box</span>
+  <span class="code__func">+transform</span><span class="code__punct">(</span><span class="code__func">rotate</span><span class="code__punct">(</span><span class="code__num">30deg</span><span class="code__punct">)</span><span class="code__punct">)</span></code></pre>
+
+      <h6>CSS</h6>
+      <pre class="code">
+<code><span class="code__sel">.box</span> <span class="code__punct">{</span>
+  <span class="code__prop">-webkit-transform</span><span class="code__punct">:</span> <span class="code__func">rotate</span><span class="code__punct">(</span><span class="code__num">30deg</span><span class="code__punct">);</span>
+  <span class="code__prop">-ms-transform</span><span class="code__punct">:</span> <span class="code__func">rotate</span><span class="code__punct">(</span><span class="code__num">30deg</span><span class="code__punct">);</span>
+  <span class="code__prop">transform</span><span class="code__punct">:</span> <span class="code__func">rotate</span><span class="code__punct">(</span><span class="code__num">30deg</span><span class="code__punct">);</span>
+<span class="code__punct">}</span></code></pre>
+
+      <p>To create a mixin you use the <code>@mixin</code> directive and give it a name. We've named our mixin
+        <code>transform</code>. We're
+        also using the variable <code>$property</code> inside the parentheses so we can pass in a transform of
+        whatever we
+        want. After you create your mixin, you can then use it as a CSS declaration starting with
+        <code>@include</code>
+        followed by the name of the mixin.</p>
+    </section>
+
+
+    <section id="Extend" class="main-section docs__section">
+      <header>
+        <h2>Extend</h2>
+      </header>
+      <p>This is one of the most useful features of Sass. Using <code>@extend</code> lets you share a set of CSS
+        properties
+        from one selector to another. It helps keep your Sass very DRY. In our example we're going to create a
+        simple series of messaging for errors, warnings and successes using another feature which goes hand in
+        hand with extend, placeholder classes. A placeholder class is a special type of class that only prints
+        when it is extended, and can help keep your compiled CSS neat and clean.</p>
+
+      <h6>SCSS</h6>
+      <pre class="code">
+<code><span class="code__comm">/* This CSS will print because %message-shared is extended. */</span>
+<span class="code__var">%message-shared</span> <span class="code__punct">{</span>
+  <span class="code__prop">border</span><span class="code__punct">:</span> <span class="code__num">1px</span> <span class="code__val">solid</span> <span class="code__num">#ccc</span><span class="code__punct">;</span>
+  <span class="code__prop">padding</span><span class="code__punct">:</span> <span class="code__num">10px</span><span class="code__punct">;</span>
+  <span class="code__prop">color</span><span class="code__punct">:</span> <span class="code__num">#333</span><span class="code__punct">;</span>
+<span class="code__punct">}</span>
+
+<span class="code__comm">// This CSS won't print because %equal-heights is never extended.</span>
+<span class="code__var">%equal-heights</span> <span class="code__punct">{</span>
+  <span class="code__prop">display</span><span class="code__punct">:</span> <span class="code__val">flex</span><span class="code__punct">;</span>
+  <span class="code__prop">flex-wrap</span><span class="code__punct">:</span> <span class="code__val">wrap</span><span class="code__punct">;</span>
+<span class="code__punct">}</span>
+
+<span class="code__sel">.message</span> <span class="code__punct">{</span>
+  <span class="code__rule">@extend</span> <span class="code__var">%message-shared</span><span class="code__punct">;</span>
+<span class="code__punct">}</span>
+
+<span class="code__sel">.success</span> <span class="code__punct">{</span>
+  <span class="code__rule">@extend</span> <span class="code__var">%message-shared</span><span class="code__punct">;</span>
+  <span class="code__prop">border-color</span><span class="code__punct">:</span> <span class="code__val">green</span><span class="code__punct">;</span>
+<span class="code__punct">}</span>
+
+<span class="code__sel">.error</span> <span class="code__punct">{</span>
+  <span class="code__rule">@extend</span> <span class="code__var">%message-shared</span><span class="code__punct">;</span>
+  <span class="code__prop">border-color</span><span class="code__punct">:</span> <span class="code__val">red</span><span class="code__punct">;</span>
+<span class="code__punct">}</span>
+
+<span class="code__sel">.warning</span> <span class="code__punct">{</span>
+  <span class="code__rule">@extend</span> <span class="code__var">%message-shared</span><span class="code__punct">;</span>
+  <span class="code__prop">border-color</span><span class="code__punct">:</span> <span class="code__val">yellow</span><span class="code__punct">;</span>
+<span class="code__punct">}</span></code></pre>
+
+      <h6>Sass</h6>
+      <pre class="code">
+<code><span class="code__comm">/* This CSS will print because %message-shared is extended. */</span>
+<span class="code__var">%message-shared</span>
+  <span class="code__prop">border</span><span class="code__punct">:</span> <span class="code__num">1px</span> <span class="code__val">solid</span> <span class="code__num">#ccc</span>
+  <span class="code__prop">padding</span><span class="code__punct">:</span> <span class="code__num">10px</span>
+  <span class="code__prop">color</span><span class="code__punct">:</span> <span class="code__num">#333</span>
+
+
+<span class="code__comm">// This CSS won't print because %equal-heights is never extended.</span>
+<span class="code__var">%equal-heights</span>
+  <span class="code__prop">display</span><span class="code__punct">:</span> <span class="code__val">flex</span>
+  <span class="code__prop">flex-wrap</span><span class="code__punct">:</span> <span class="code__val">wrap</span>
+
+
+<span class="code__sel">.message</span>
+  <span class="code__rule">@extend</span> <span class="code__var">%message-shared</span>
+
+
+<span class="code__sel">.success</span>
+  <span class="code__rule">@extend</span> <span class="code__var">%message-shared</span>
+  <span class="code__prop">border-color</span><span class="code__punct">:</span> <span class="code__val">green</span>
+
+
+<span class="code__sel">.error</span>
+  <span class="code__rule">@extend</span> <span class="code__var">%message-shared</span>
+  <span class="code__prop">border-color</span><span class="code__punct">:</span> <span class="code__val">red</span>
+
+
+<span class="code__sel">.warning</span>
+  <span class="code__rule">@extend</span> <span class="code__var">%message-shared</span>
+  <span class="code__prop">border-color</span><span class="code__punct">:</span> <span class="code__val">yellow</span>
+</code></pre>
+
+      <h6>CSS</h6>
+      <pre class="code">
+<code><span class="code__comm">/* This CSS will print because %message-shared is extended. */</span>
+<span class="code__sel">.message</span><span class="code__punct">,</span> <span class="code__sel">.success</span><span class="code__punct">,</span> <span class="code__sel">.error</span><span class="code__punct">,</span> <span class="code__sel">.warning</span> <span class="code__punct">{</span>
+  <span class="code__prop">border</span><span class="code__punct">:</span> <span class="code__num">1px</span> <span class="code__val">solid</span> <span class="code__num">#ccc</span><span class="code__punct">;</span>
+  <span class="code__prop">padding</span><span class="code__punct">:</span> <span class="code__num">10px</span><span class="code__punct">;</span>
+  <span class="code__prop">color</span><span class="code__punct">:</span> <span class="code__num">#333</span><span class="code__punct">;</span>
+<span class="code__punct">}</span>
+
+<span class="code__sel">.success</span> <span class="code__punct">{</span>
+  <span class="code__prop">border-color</span><span class="code__punct">:</span> <span class="code__val">green</span><span class="code__punct">;</span>
+<span class="code__punct">}</span>
+
+<span class="code__sel">.error</span> <span class="code__punct">{</span>
+  <span class="code__prop">border-color</span><span class="code__punct">:</span> <span class="code__val">red</span><span class="code__punct">;</span>
+<span class="code__punct">}</span>
+
+<span class="code__sel">.warning</span> <span class="code__punct">{</span>
+  <span class="code__prop">border-color</span><span class="code__punct">:</span> <span class="code__val">yellow</span><span class="code__punct">;</span>
+<span class="code__punct">}</span>                   
+</code></pre>
+
+      <p>What the above code does is tells <code>.message</code>, <code>.success</code>, <code>.error</code>, and
+        <code>.warning</code> to behave just like <code>%message-shared</code>. That means anywhere that
+        <code>%message-shared</code> shows up, <code>.message</code>, <code>.success</code>,
+        <code>.error</code>, & <code>.warning</code> will too. The magic happens in the generated CSS, where
+        each of these classes will get the same CSS properties as <code>%message-shared</code>. This helps you
+        avoid having to write multiple class names on HTML elements.</p>
+      <p>You can extend most simple CSS selectors in addition to placeholder classes in Sass, but using
+        placeholders is the easiest way to make sure you aren't extending a class that's nested elsewhere in
+        your styles, which can result in unintended selectors in your CSS.</p>
+      <p>Note that the CSS in <code>%equal-heights</code> isn't generated, because <code>%equal-heights</code> is
+        never extended.</p>
+    </section>
+
+
+    <section id="Operators" class="main-section docs__section">
+      <header>
+        <h2>Operators</h2>
+      </header>
+      <p>Doing math in your CSS is very helpful. Sass has a handful of standard math operators like
+        <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, and <code>%</code>. In our example we're
+        going to do some simple math to calculate widths for an <code>aside</code> & <code>article</code>.</p>
+
+      <h6>SCSS</h6>
+      <pre class="code">
+<code><span class="code__sel">.container</span> <span class="code__punct">{</span>
+  <span class="code__prop">width</span><span class="code__punct">:</span> <span class="code__num">100%</span><span class="code__punct">;</span>
+<span class="code__punct">}</span>
+
+<span class="code__sel">article</span><span class="code__punct">[</span><span class="code__sel">role</span><span class="code__punct">=</span><span class="code__str">"main"</span><span class="code__punct">]</span> <span class="code__punct">{</span>
+  <span class="code__prop">float</span><span class="code__punct">:</span> <span class="code__val">left</span><span class="code__punct">;</span>
+  <span class="code__prop">width</span><span class="code__punct">:</span> <span class="code__num">600px</span> <span class="code__punct">/</span> <span class="code__num">960px</span> <span class="code__punct">*</span> <span class="code__num">100%</span><span class="code__punct">;</span>
+<span class="code__punct">}</span>
+
+<span class="code__sel">aside</span><span class="code__punct">[</span><span class="code__sel">role</span><span class="code__punct">=</span><span class="code__str">"complementary"</span><span class="code__punct">]</span> <span class="code__punct">{</span>
+  <span class="code__prop">float</span><span class="code__punct">:</span> <span class="code__val">right</span><span class="code__punct">;</span>
+  <span class="code__prop">width</span><span class="code__punct">:</span> <span class="code__num">300px</span> <span class="code__punct">/</span> <span class="code__num">960px</span> <span class="code__punct">*</span> <span class="code__num">100%</span><span class="code__punct">;</span>
+<span class="code__punct">}</span></code></pre>
+
+      <h6>Sass</h6>
+      <pre class="code">
+<code><span class="code__sel">.container</span>
+  <span class="code__prop">width</span><span class="code__punct">:</span> <span class="code__num">100%</span>
+  
+<span class="code__sel">article</span><span class="code__punct">[</span><span class="code__sel">role</span><span class="code__punct">=</span><span class="code__str">"main"</span><span class="code__punct">]</span>
+  <span class="code__prop">float</span><span class="code__punct">:</span> <span class="code__val">left</span>
+  <span class="code__prop">width</span><span class="code__punct">:</span> <span class="code__num">600px</span> <span class="code__punct">/</span> <span class="code__num">960px</span> <span class="code__punct">*</span> <span class="code__num">100%</span>
+  
+<span class="code__sel">aside</span><span class="code__punct">[</span><span class="code__sel">role</span><span class="code__punct">=</span><span class="code__str">"complementary"</span><span class="code__punct">]</span>
+  <span class="code__prop">float</span><span class="code__punct">:</span> <span class="code__val">right</span>
+  <span class="code__prop">width</span><span class="code__punct">:</span> <span class="code__num">300px</span> <span class="code__punct">/</span> <span class="code__num">960px</span> <span class="code__punct">*</span> <span class="code__num">100%</span></code></pre>
+
+      <h6>CSS</h6>
+      <pre class="code">
+<code><span class="code__sel">.container</span> <span class="code__punct">{</span>
+  <span class="code__prop">width</span><span class="code__punct">:</span> <span class="code__num">100%</span><span class="code__punct">;</span>
+<span class="code__punct">}</span>
+    
+<span class="code__sel">article</span><span class="code__punct">[</span><span class="code__sel">role</span><span class="code__punct">=</span><span class="code__str">"main"</span><span class="code__punct">] {</span>
+  <span class="code__prop">float</span><span class="code__punct">:</span> <span class="code__val">left</span><span class="code__punct">;</span>
+  <span class="code__prop">width</span><span class="code__punct">:</span> <span class="code__num">62.5%</span><span class="code__punct">;</span>
+<span class="code__punct">}</span>
+    
+<span class="code__sel">aside</span><span class="code__punct">[</span><span class="code__sel">role</span><span class="code__punct">=</span><span class="code__str">"complementary"</span><span class="code__punct">] {</span>
+  <span class="code__prop">float</span><span class="code__punct">:</span> <span class="code__val">right</span><span class="code__punct">;</span>
+  <span class="code__prop">width</span><span class="code__punct">:</span> <span class="code__num">31.25%</span><span class="code__punct">;</span>
+<span class="code__punct">}</span></code></pre>
+
+      <p>We've created a very simple fluid grid, based on 960px. Operations in Sass let us do something like take
+        pixel values and convert them to percentages without much hassle.</p>
+
+      <aside class="docs__aside">
+        <h6>See also</h6>
+        <ul class="docs__ul">
+          <li><a href="https://www.freecodecamp.org/news/the-complete-guide-to-scss-sass-30053c266b23/"
+              target="_blank">'The
+              Complete Guide to SCSS/SASS' on FCC</a></li>
+          <li><a href="http://thesassway.com/" target="_blank">The Sass Way
+              (Tutorials)</a></li>
+          <li><a href="https://devhints.io/sass" target="_blank">Devhints.io
+              Cheatsheet</a></li>
+          <li><a href="https://github.com/sass" target="_blank">Sass on Github</a></li>
+          <li><a href="https://sass-lang.com/" target="_blank">Official Website</a></li>
+        </ul>
+      </aside>
+    </section>
+
+  </main>
+
+  <script src="../../jquery-3.5.0.min.js"></script>
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  <script src="../../fcc-test-toggle-style-override/fcc-test-toggle-style-override.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
