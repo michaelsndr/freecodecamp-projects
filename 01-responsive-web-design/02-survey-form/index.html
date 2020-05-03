@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link href="main.css" rel="stylesheet" />
+  <title>ACME Properties</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="overlay"></div>
+  <div class="card">
+    <form class="card__form" id="survey-form">
+
+      <!-- Logo credit: http://acmelogos.com/ -->
+      <img class="card__form_logo" src="img/acme_logo.svg"
+        alt="ACME Logo" />
+      <h1 class="card__form_h1" id="title">
+        Welcome to the ACME Properties customer satifaction survey.
+      </h1>
+      <p class="card__form_descr" id="description">
+        This should take about 2 minutes. Thank you for participating!
+      </p>
+
+      <!-- question 1 -->
+      <label class="card__form_label" for="question01">1. How did you first hear about us?</label>
+      <select class="card__form_dropdown" id="question01" name="question01">
+        <option value="" selected disabled hidden>Please select ...</option>
+        <option value="personal">Personal Recommendation</option>
+        <option value="search">Web Search</option>
+        <option value="blog">Blog</option>
+        <option value="social">Social Media</option>
+        <option value="print">Newspaper / Magazine</option>
+        <option value="outdoor">Outdoor Advertisement</option>
+        <option value="radio">Radio</option>
+        <option value="other">Other</option>
+      </select>
+
+      <!-- question 2 -->
+      <label class="card__form_label" for="dropdown">2. Which type of property are you interested in?</label>
+      <select class="card__form_dropdown" id="dropdown" name="question02">
+        <option value="" selected disabled hidden>Please select ...</option>
+        <option value="apartments">Apartments</option>
+        <option value="furnished">Furnished Apartments</option>
+        <option value="serviced">Serviced Apartments</option>
+        <option value="villas">Villas</option>
+        <option value="offices">Offices</option>
+        <option value="retail">Retail</option>
+      </select>
+
+      <!-- question 3 -->
+      <label class="card__form_label" for="number" id="number-label">3. How many bedrooms do you prefer?</label>
+      <input class="card__form_input-number" id="number" type="number" placeholder="3" min="0" max="100">
+
+      <!-- question 4 -->
+      <fieldset class="card__form_checkboxes" id="question04">
+        <legend class="card__form_label">4. What makes our properties stand out from the competition?</legend>
+
+        <input id="locations" type="checkbox" name="locations" value="locations" />
+        <label for="locations">Locations</label>
+
+        <input id="architecture" type="checkbox" name="architecture" value="architecture" />
+        <label for="architecture">Architecture</label>
+
+        <input id="design" type="checkbox" name="design" value="design" />
+        <label for="design">Interior Design</label>
+
+        <input id="size" type="checkbox" name="size" value="size" />
+        <label for="size">Size</label>
+
+        <input id="layout" type="checkbox" name="layout" value="layout" />
+        <label for="layout">Layout</label>
+
+        <input id="value" type="checkbox" name="value" value="value" />
+        <label for="value">Value For Money</label>
+      </fieldset>
+
+      <!-- question 5 -->
+      <fieldset class="card__form_input-radio" id="question05">
+        <legend class="card__form_label">5. How likely is that you would recommend ACME Properties to a
+          friend?</legend>
+
+        <input type="radio" id="recomm01" name="recommendation" value="1" />
+        <label for="recomm01">5</label>
+
+        <input type="radio" id="recomm02" name="recommendation" value="2" />
+        <label for="recomm02">4</label>
+
+        <input type="radio" id="recomm03" name="recommendation" value="3" />
+        <label for="recomm03">3</label>
+
+        <input type="radio" id="recomm04" name="recommendation" value="4" />
+        <label for="recomm04">2</label>
+
+        <input type="radio" id="recomm05" name="recommendation" value="5" />
+        <label for="recomm05">1</label>
+      </fieldset>
+      <div class="card__form_input-radio--extra-label">
+        <span>likely</span><span>unlikely</span>
+      </div>
+
+      <!-- question 6 -->
+      <label class="card__form_label" for="question06">6. Is there anything missing on this page?
+        <span class="card__form_label--optional">(optional)</span></label>
+      <textarea class="card__form_textarea" id="question06" rows="5"></textarea>
+
+      <label class="card__form_label" for="question07">7. Would you like to tell us anything else?
+        <span class="card__form_label--optional">(optional)</span></label>
+      <textarea class="card__form_textarea" id="question07" rows="5"></textarea>
+
+      <h2 class="card__form_h2">Personal Details</h2>
+      <label class="card__form_label--pers" for="name" id="name-label">Name</label>
+      <input class="card__form_input-text card__form_input--pers" id="name" type="text" placeholder="John Sample"
+        required />
+      <label class="card__form_label--pers" for="email" id="email-label">E-Mail</label>
+      <input class="card__form_input-text card__form_input--pers" id="email" type="email"
+        placeholder="johnsample@gmail.com" required />
+
+      <button class="card__form_button" id="submit" type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script src="../../jquery-3.5.0.min.js"></script>
+  <script src="../../fcc-test-suite.js"></script>
+  <script src="../../fcc-test-toggle-style-override.js"></script>
+  <script src="./main.js"></script>
+</body>
+
+</html>
