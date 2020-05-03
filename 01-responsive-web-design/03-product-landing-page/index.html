@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FCC - Product Landing Page</title>
+    <link href="sanitize.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&family=Roboto+Mono&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+</head>
+
+<body>
+    <a id="top"></a>
+    <header class="header" id="header">
+        <div class="header__container">
+            <a class="header__logo-link" href="#top">
+                <img class="header__logo-img" id="header-img" src="img/verto-logo.svg" alt="Vtol Logo"></a>
+            <a class="header__nav-toggle" href="#top"></a>
+
+            <nav class="header__nav" id="nav-bar">
+                <a class="header__nav-link nav-link" href="#top">Home</a>
+                <a class="header__nav-link nav-link" href="#video-container">Watch</a>
+                <a class="header__nav-link nav-link" href="#features">Features</a>
+                <a class="header__nav-link nav-link" href="#footer">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- hero -->
+        <!-- Photo: https://unsplash.com/photos/u1EGfuB4llU -->
+        <section class="hero">
+            <h1 class="hero__heading">The all-new Dragonfly.</h1>
+            <picture class="hero__image">
+                <source srcset="img/drone_700w.jpg" media="(min-width: 450px)">
+                <img src="img/drone_450w.jpg" alt="Drone">
+            </picture>
+        </section>
+
+        <!-- newsletter -->
+        <section class="newsletter">
+            <h2 class="newsletter__heading">Let me know when it is available.</h2>
+            <form class="newsletter__form" id="form" action="https://www.freecodecamp.com/email-submit">
+                <input class="newsletter__email-field" id="email" name="email" type="email" placeholder="name@email.com"
+                    required>
+                <input class="newsletter__btn" id="submit" type="submit" form="form" value="SUBSCRIBE">
+            </form>
+        </section>
+
+        <!-- video -->
+        <!-- Video Credit: https://coverr.co/videos/dunes-drone-view-DnBhCNa6Tl -->
+        <section class="video" id="video-container">
+            <h2 class="video__heading">See it in action.</h2>
+            <button class="video__play-btn">
+                <svg class="video__play-btn-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24"
+                    style="enable-background:new 0 0 24 24;" xml:space="preserve">
+                    <style type="text/css">
+                        .st0 {
+                            fill: #f5f6f7;
+                        }
+                    </style>
+                    <path class="st0"
+                        d="M12,0C5.4,0,0,5.4,0,12s5.4,12,12,12s12-5.4,12-12S18.6,0,12,0z M9,17V7l9,5.1L9,17z" />
+                </svg>
+                Watch video
+            </button>
+
+            <div class="video__bg-container">
+                <video class="video__bg-content" id="video" autoplay muted loop>
+                    <source src="img/bg-video.mp4" type="video/mp4">
+                    play
+                </video>
+            </div>
+        </section>
+
+        <!-- features -->
+        <section class="features" id="features">
+            <h2 class="features__heading">Features</h2>
+            <div class="features__list">
+                <div class="features__list-item features__list-item--1">
+                    <i class="features__icon material-icons">hd</i>
+                    <h3 class="features__item-heading">Higher Definition</h3>
+                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
+                    </p>
+                </div>
+
+                <div class="features__list-item features__list-item--3">
+                    <i class="features__icon material-icons">timelapse</i>
+                    <h3 class="features__item-heading">Longer Flights</h3>
+                    <p>Ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.
+                    </p>
+                </div>
+
+                <div class="features__list-item features__list-item--4">
+                    <i class="features__icon material-icons">battery_charging_full</i>
+                    <h3 class="features__item-heading">Faster Charging</h3>
+                    <p>Dolore eu fugiat nulla pariatur. Excepteur sint cupidatat non proident, sunt in culpa.</p>
+                </div>
+
+                <div class="features__list-item features__list-item--2">
+                    <i class="features__icon material-icons">near_me</i>
+                    <h3 class="features__item-heading">GPS Precise Hover</h3>
+                    <p>Incididunt ut labore et dolore magna aliqua. Ut enim minim veniam, nostrud exercitation.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- footer -->
+        <footer class="footer" id="footer">
+            <div class="footer__links">
+                <address class="footer__links-group">
+                    <h5 class="footer__heading">Contact</h5>
+                    <a class="footer__link" href="#">office@verti.co</a><br>
+                    <a class="footer__link" href="#">+971 501 5511</a>
+                </address>
+                <address class="footer__links-group">
+                    <h5 class="footer__heading">Address</h5>
+                    Yellow Brick Rd. 64<br>
+                    4030 Linz, Austria
+                </address>
+                <div class="footer__links-group">
+                    <h5 class="footer__heading">Social</h5>
+                    <a class="footer__link" href="#">Instagram</a><br>
+                    <a class="footer__link" href="#">Facebook</a>
+                </div>
+                <div class="footer__links-group">
+                    <h5 class="footer__heading">Legal</h5>
+                    <a class="footer__link" href="#">Privacy Policy</a><br>
+                    <a class="footer__link" href="#">Terms Of use</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="../../jquery-3.5.0.min.js"></script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <script src="../../fcc-test-toggle-style-override.js"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
