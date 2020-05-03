@@ -109,7 +109,7 @@ function restyleToggle() {
     // old toggle - manipulate styling
     document.querySelector("#fcc_test_suite_wrapper").shadowRoot.querySelector("#fcc_foldout_toggler_background").style.backgroundColor = "rgba(0,0,0,0)";
     document.querySelector("#fcc_test_suite_wrapper").shadowRoot.querySelector("#fcc_foldout_toggler").style.opacity = "0";
-    document.querySelector("#fcc_test_suite_wrapper").shadowRoot.querySelector("#fcc_foldout_menu").insertAdjacentHTML("afterbegin", '<img class="test-suite__close-x" src="https://www.michaelschneider.io/misc/fcc/rwd/iconmonstr-x-mark-1.svg" alt="close tests" style="left: 12px; position: absolute; top: 13px; width: 16px;">');
+    document.querySelector("#fcc_test_suite_wrapper").shadowRoot.querySelector("#fcc_foldout_menu").insertAdjacentHTML("afterbegin", '<img class="test-suite__close-x" src="../../fcc-test-toggle-style-override/iconmonstr-x-mark-1.svg" alt="close tests" style="left: 12px; position: absolute; top: 13px; width: 16px;">');
 
     let toggle = document.querySelector("#fcc_test_suite_wrapper").shadowRoot.querySelector("#fcc_toggle");
     $(toggle).prop("checked", true);
