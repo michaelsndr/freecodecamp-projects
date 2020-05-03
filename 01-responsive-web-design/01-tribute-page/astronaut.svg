@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" x="0" y="0" class="five-steps__step-1_illu" version="1.1" viewBox="0 0 148 149" xml:space="preserve">
+  <style>
+    .st2{fill:#f9f9f9;stroke:#000;stroke-width:7}.st3{fill:#fff}
+  </style>
+  <g id="Page-1">
+    <g transform="translate(-179 -1022)">
+      <g transform="translate(170.512 1011.139)">
+
+        <!-- background circle -->
+        <g id="bg-circle" transform="translate(9 11.01)">
+              <circle cx="72.9" cy="75.8" r="73" opacity="0.15"/>
+              <circle cx="73.9" cy="73.8" r="73" fill="#5aa3a0"/>
+        </g>
+
+        <!-- astronaut -->
+        <g id="astronaut" transform="rotate(-47 72.706 31.338)">
+          <path d="M15.9 21.7L58 18.6c5.4-.4 10.1 3.7 10.5 9.1L71.3 65c.4 5.4-3.7 10.1-9.1 10.5l-42.2 3c-5.4.4-10.1-3.7-10.5-9.1L6.8 32.2c-.4-5.4 3.7-10.1 9.1-10.5z" class="st2"/>
+          <ellipse cx="37.5" cy="26.7" class="st2" rx="21.4" ry="21" transform="rotate(175.836 37.475 26.686) scale(1.00004)"/>
+          <ellipse cx="37.5" cy="26.7" rx="12.8" ry="12.6" transform="rotate(175.836 37.475 26.686) scale(1.00004)"/>
+          <path d="M9.8 41.6h61.9v60.8H9.8z" class="st2" transform="rotate(175.836 40.728 72.02) scale(1.00004)"/>
+          <g transform="translate(.48 36.584)">
+            <path d="M14 6.9L.3 7.9l2.8 38.5c.3 3.9 3.6 6.8 7.4 6.6 3.8-.3 6.6-3.6 6.3-7.6L14 6.9z" class="st2"/>
+          </g>
+          <g transform="translate(63.478 36.584)">
+            <path d="M12.8 2.4l-13.7 1 2.8 38.5c.3 3.9 3.6 6.8 7.4 6.6 3.8-.3 6.6-3.6 6.3-7.6L12.8 2.4z" class="st2"/>
+          </g>
+          <path d="M29.8 55.2h20.6v15.4H29.8z" class="st2" transform="rotate(175.836 40.053 62.93) scale(1.00004)"/>
+          <g transform="translate(18.5 92)">
+            <g>
+              <path d="M7.4 45.6v.2c.5 4 4 6.9 7.9 6.6 3.9-.3 6.9-3.7 6.8-7.7v-.2l-1.5-20.9L6 24.8l1.4 20.8z" class="st2"/>
+              <path d="M5.8 4.4h14.7v34.4H5.8z" class="st2" transform="rotate(175.836 13.102 21.563) scale(1.00004)"/>
+            </g>
+            <g transform="translate(25)">
+              <path d="M6.9 43.9v.2c.5 4 4 6.9 7.9 6.6 3.9-.3 6.9-3.7 6.8-7.7v-.2l-1.5-20.9L5.5 23l1.4 20.9z" class="st2"/>
+              <path d="M5.3 2.6H20V37H5.3z" class="st2" transform="rotate(175.836 12.608 19.793) scale(1.00004)"/>
+            </g>
+          </g>
+        </g>
+
+        <!-- stars -->
+        <g id="stars" transform="translate(31.728 20.787)">
+          <circle cx="101.2" cy="43.5" r="5" class="st3"/>
+          <circle cx="76.2" cy="14.7" r="5" class="st3"/>
+          <circle cx="5" cy="92" r="5" class="st3"/>
+          <circle cx="48.4" cy="121.7" r="5" class="st3"/>
+          <circle cx="115" cy="50.6" r="2.5" class="st3"/>
+          <circle cx="68.4" cy="2.5" r="2.5" class="st3"/>
+          <circle cx="8.2" cy="107.2" r="2.5" class="st3"/>
+          <circle cx="62.2" cy="120.2" r="2.5" class="st3"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
